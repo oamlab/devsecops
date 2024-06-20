@@ -222,7 +222,7 @@ shutdown_timeout = 0
 
 ### token 获取
 
-![image-20240519150144453](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240519150144453.png)
+![image-20240519150144453](./images/image-20240519150144453.png)
 
 ### **Stages**
 
@@ -276,7 +276,7 @@ job_03:
 
 ###  git 目录结构
 
-![image-20240526162852883](./images/image-001.png)
+![image-20240526162852883](./images/image-20240526162852883.png)
 
 #### .gitlab-ci.yaml      #流水线配置
 
@@ -559,13 +559,13 @@ spec:
 
 ### 流水线输出结果
 
-![image-20240526163950077](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240526163950077.png)
+![image-20240526163950077](./images/image-20240526163950077.png)
 
 
 
 ### 提交git
 
-![image-20240526165142262](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240526165142262.png)
+![image-20240526165142262]()
 
 ### 再次请求，返回 V4
 
