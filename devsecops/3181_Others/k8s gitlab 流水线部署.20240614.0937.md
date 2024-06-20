@@ -565,11 +565,11 @@ spec:
 
 ### 提交git
 
-![image-20240526165142262]()
+![image-20240526165142262](./images/image-20240526165142262.png)
 
 ### 再次请求，返回 V4
 
-![image-20240526165250316](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240526165250316.png)
+![image-20240526165250316](./images/image-20240526165250316.png)
 
 
 
