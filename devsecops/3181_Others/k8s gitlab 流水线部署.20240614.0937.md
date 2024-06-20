@@ -276,7 +276,7 @@ job_03:
 
 ###  git 目录结构
 
-![image-20240526162852883](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240526162852883.png)
+![image-20240526162852883](./images/image-001.png)
 
 #### .gitlab-ci.yaml      #流水线配置
 
