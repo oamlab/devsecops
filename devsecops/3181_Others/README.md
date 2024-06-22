@@ -176,6 +176,9 @@ curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/s
 yum install gitlab-runner-16.9.0
 ```
 
+##### 获取 token
+![image-20240519150144453](./images/image-20240519150144453.png)
+
 ##### 注册 gitlab-runner
 ```
 # 注册命令范例
@@ -231,12 +234,6 @@ shutdown_timeout = 0
     [runners.custom]
       run_exec = ""
 ```
-
-
-
-##### 获取 token
-
-![image-20240519150144453](./images/image-20240519150144453.png)
 
 #### git 内某个项目仓库的目录结构
 
