@@ -241,10 +241,10 @@ shutdown_timeout = 0
 ![image-20240526162852883](./images/image-20240526162852883.png)
 
 ````
-#流水线配置
+# 流水线配置
 .gitlab-ci.yaml
 
-#构建镜像
+# 构建镜像
 k8s/dockerfile
 
 # k8s发布
