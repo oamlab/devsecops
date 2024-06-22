@@ -21,16 +21,16 @@
 - [Online Documentation：https://github.com/oamlab/devsecops](https://github.com/oamlab/devsecops/blob/main/README.English.md)
 
 ## 🔋 Repository Contact
-| Full Name						 | CONTACT             |
-|----------------|---------------------|
-| **xxx**  | xxx@xxx.com |
-| **xxx**  | xxx@xxx.com |
+| Full Name						 | CONTACT           |
+|-----------------|-------------------|
+| **Eric Zhou**   | 243120635@qq.com  |
+| **Andy Yao**    | 77810419@qq.com   |
 
 ## 🔒 Background
 - ...
 
 ## 🔑 Purpose
-- DevSecOps is ...
+- DevSecOps is the abbreviation of Development, Security and Operation. It is the practical idea of agile project management in the software life cycle. At each stage of the software life cycle (development, testing, delivery, transit maintenance, grayscale, production, etc.), the project team has the ability to operate continuously in an assembly line manner.
 
 ## 📚 Currently Sharing Content：
 
@@ -39,6 +39,9 @@
 - ...
 - ..
 - .
+
+## 📃 Others
+- [Enterprise Software R&D Effectiveness DevSecOps Toolkit](https://github.com/oamlab/oamlab/blob/main/OAMLab/161_%E8%BF%90%E7%BB%B4%E8%A7%82%E7%82%B9/5304_%E8%BF%90%E7%BB%B4.%E5%AE%89%E5%85%A8.%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8.%E4%BC%81%E4%B8%9A%E5%95%86%E4%B8%9A%E9%9A%90%E7%A7%81%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2%E7%9A%84%E5%87%A0%E4%B8%AA%E9%80%94%E5%BE%84.20230424.2225.pdf)
 
 ## 📶 Technical Exchange Club
 (CN)SHENZHEN OAM CLUB, QQ group：216589280 [Click to join](https://jq.qq.com/?_wv=1027&k=tdDtDoUp)
