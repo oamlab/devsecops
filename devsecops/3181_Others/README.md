@@ -9,7 +9,7 @@
 
 ## Kubernetes、GitLab、CI/CD 流水线部署  
 
-### 版本：
+### 软件版本：
 ````
 Centos Stream 9
 Kubernetes 1.28.2
