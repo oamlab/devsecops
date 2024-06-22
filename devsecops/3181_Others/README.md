@@ -150,7 +150,9 @@ trivy:
   skip_update: true    #停止在线更新库
 ```
 
-### 安装 gitlab-ce
+### 安装 GitLab 与 gitlab-runner
+
+#### 安装 gitlab-ce
 ```
 wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el9/gitlab-ce-16.9.6-ce.0.el9.x86_64.rpm
 yum localinstall gitlab-ce-16.9.6-ce.0.el9.x86_64.rpm
@@ -166,13 +168,13 @@ gitlab-ctl reconfigure
 cat /etc/gitlab/initial_root_password
 ```
 
-### 安装 gitlab-runner
+#### 安装 gitlab-runner
 ```
 curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
 yum install gitlab-runner-16.9.0
 ```
 
-### 注册 gitlab-runner
+#### 注册 gitlab-runner
 ```
 # 注册命令范例
 gitlab-runner register --url http://gitlab.test.com --token glrt-Kmnz8Vfzzcce-uwRuy_R
@@ -192,7 +194,7 @@ docker      #运行器
 docker:20.10.2    #默认镜像
 ```
 
-### 配置 gitlab-runner
+#### 配置 gitlab-runner
 
 ```
 cat /etc/gitlab-runner/config.toml
@@ -230,11 +232,26 @@ shutdown_timeout = 0
 
 
 
-### 获取 token
+#### 获取 token
 
 ![image-20240519150144453](./images/image-20240519150144453.png)
 
-### **Stages**
+### git 内某个项目仓库的目录结构
+
+![image-20240526162852883](./images/image-20240526162852883.png)
+
+````
+#流水线配置
+.gitlab-ci.yaml
+
+#构建镜像
+k8s/dockerfile
+
+# k8s发布
+k8s/deployment.yaml
+````
+
+### 关于 .gitlab-ci.yaml 的 Stages 的说明
 
 Stages 数组 用来定义一次CI有哪几个阶段，如下
 
@@ -283,22 +300,7 @@ job_03:
 
 这里第二步使用了`docker-envsubst:stable` , 仔细看`script`, 这是在一个容器里面去构建一个镜像, 为了**整体体验**与**构建效率**着想, 我们之前注册`runner`的时候,将宿主机的`docker.sock`映射进去是十分必要的!!
 
-### git 项目仓库的目录结构
-
-![image-20240526162852883](./images/image-20240526162852883.png)
-
-````
-#流水线配置
-.gitlab-ci.yaml
-
-#构建镜像
-k8s/dockerfile
-
-# k8s发布
-k8s/deployment.yaml
-````
-
-### .gitlab-ci.yaml
+### 参考文件 .gitlab-ci.yaml
 ```
 ---
 variables:
@@ -369,7 +371,7 @@ job_04:
   - envsubst < k8s/svc-route.yaml | kubectl apply -f -
 ```
 
-### dockerfile
+### 参考文件 dockerfile
 ```
 FROM 192.168.11.91:5000/library/busybox:latest
 
@@ -402,7 +404,7 @@ RUN rm -rf /tmp/$appName/public/upload/ && \
 CMD ["sh","-c","/root/entrypoint.sh"]
 ```
 
-### deployment.yaml
+### 参考文件 deployment.yaml
 ```
 kind: Deployment
 apiVersion: apps/v1
@@ -519,7 +521,7 @@ spec:
   progressDeadlineSeconds: 600
 ```
 
-### svc-route.yaml
+### 参考文件 svc-route.yaml
 ```
 kind: Service
 apiVersion: v1
