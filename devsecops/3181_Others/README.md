@@ -105,7 +105,6 @@ wget https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/ca
               value: "10.244.0.0/16"
 ```
 
-**此时应检查节点和Pod是否正常！**
 
 #### 安装 harbor
 ```
@@ -152,9 +151,8 @@ trivy:
   skip_update: true    #停止在线更新库
 ```
 
-#### 安装 GitLab 与 gitlab-runner
 
-##### 安装 gitlab-ce
+#### 安装 gitlab-ce
 ```
 wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el9/gitlab-ce-16.9.6-ce.0.el9.x86_64.rpm
 yum localinstall gitlab-ce-16.9.6-ce.0.el9.x86_64.rpm
@@ -170,16 +168,16 @@ gitlab-ctl reconfigure
 cat /etc/gitlab/initial_root_password
 ```
 
-##### 安装 gitlab-runner
+#### 安装 gitlab-runner
 ```
 curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
 yum install gitlab-runner-16.9.0
 ```
 
-##### 获取 gitlab-runner 注册需要的 token
+#### 获取 gitlab-runner 注册需要的 token
 ![image-20240519150144453](./images/image-20240519150144453.png)
 
-##### 注册 gitlab-runner
+#### 注册 gitlab-runner
 ```
 # 注册命令范例
 gitlab-runner register --url http://gitlab.test.com --token glrt-Kmnz8Vfzzcce-uwRuy_R
@@ -195,11 +193,9 @@ http://gitlab.test.com
 # GitLab的token
 glrt-Kmnz8Vfzzcce-uwRuy_R
 
-docker      #运行器                  
-docker:20.10.2    #默认镜像
 ```
 
-##### 配置 gitlab-runner
+#### 配置 gitlab-runner
 
 ```
 cat /etc/gitlab-runner/config.toml
@@ -235,20 +231,6 @@ shutdown_timeout = 0
       run_exec = ""
 ```
 
-#### git 内某个项目仓库的目录结构
-
-![image-20240526162852883](./images/image-20240526162852883.png)
-
-````
-# 流水线配置
-.gitlab-ci.yaml
-
-# 构建镜像
-k8s/dockerfile
-
-# k8s发布
-k8s/deployment.yaml
-````
 
 #### 关于 .gitlab-ci.yaml 的 Stages 的说明
 
@@ -566,21 +548,30 @@ spec:
                   number: 80
 ```
 
-## 测试
+### 测试
+简单流程: 提交git会自动触发流水线调用执行器gitlab-runner --> docker构建新镜像(拉取最新静态文件) --> 推送新镜像到仓库 --> kubectl请求工作负载更换容器镜像 --> k8s创建新的pod(滚动更新)。
 
-### 提交文件变更到git
+#### git 内某个项目仓库的目录结构
+![image-20240526162852883](./images/image-20240526162852883.png)
+````
+# GitLab内某个仓库的流水线配置文件
+.gitlab-ci.yaml
+
+# 用于构建应用的容器镜像
+k8s/dockerfile
+
+# 用于在k8s上发布容器应用的容器镜像
+k8s/deployment.yaml
+````
+
+#### 提交文件变更到git
 ![image-20240526165142262](./images/image-20240526165142262.png)
 
-### GitLab流水线输出执行日志
+#### GitLab流水线输出执行日志
 ![image-20240526163950077](./images/image-20240526163950077.png)
 
-### 再次请求URL，返回预期内容 “v4”
+#### 再次请求URL，返回预期内容 “v4”
 ![image-20240526165250316](./images/image-20240526165250316.png)
 
-### 容器镜像的漏洞扫描结果
+#### Harbor镜像的漏洞扫描结果
 ![image-20240622202428](./images/image_20240622202428.png)
-
-## 说明
-现在你只管提交代码, 就能快速看到新功能集成到相应的环境了。
-
-提交git会自动触发流水线 >> docker构建新镜像(拉取最新文件) >> 推送新镜像到仓库 >> kubectl请求工作负载更换容器镜像 >> k8s创建新的pod(滚动更新)。
