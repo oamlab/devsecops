@@ -17,16 +17,16 @@
 ---
 
 ## 🌏 前言
-- [在线文档：https://github.com/oamlab/devsecops](https://github.com/oamlab/devsecops)
+- [在线文档：https://gitee.com/oamlab/devsecops](https://gitee.com/oamlab/devsecops)
 - [Online Documentation：https://github.com/oamlab/devsecops](https://github.com/oamlab/devsecops/blob/main/README.English.md)
 
-*[国内访问请使用国内资料仓gitee入口，点击进入](https://gitee.com/oamlab/devsecops)
+*[国际访问请使用国际资料仓github入口，点击进入](https://github.com/oamlab/devsecops)
 
 ## 🔋 仓库联系人
-| 姓名						   | 联系方式              |
-|------------|-------------------|
-| **周伟**     | 243120635@qq.com  |
-| **姚国贵**    | 77810419@qq.com   |
+| 姓名						 | 联系方式              |
+|----------|-------------------|
+| **周伟**   | 243120635@qq.com  |
+| **姚国贵**  | 77810419@qq.com   |
 
 ## 🔒 背景
 - 关注企业在敏捷项目思想方面的实践能力。
@@ -43,7 +43,7 @@
 - .
 
 ## 📃 其他资料
-- [企业软件研发效能DevSecOps工具集](https://github.com/oamlab/oamlab/blob/main/OAMLab/161_%E8%BF%90%E7%BB%B4%E8%A7%82%E7%82%B9/5304_%E8%BF%90%E7%BB%B4.%E5%AE%89%E5%85%A8.%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8.%E4%BC%81%E4%B8%9A%E5%95%86%E4%B8%9A%E9%9A%90%E7%A7%81%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2%E7%9A%84%E5%87%A0%E4%B8%AA%E9%80%94%E5%BE%84.20230424.2225.pdf)
+- [企业软件研发效能DevSecOps工具集](https://gitee.com/OAMLab/oamlab/raw/main/OAMLab/161_%E8%BF%90%E7%BB%B4%E8%A7%82%E7%82%B9/5202_%E8%BF%90%E7%BB%B4.DecSecOps.%E4%BC%81%E4%B8%9A%E8%BD%AF%E4%BB%B6%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BDDecSecOps%E5%B7%A5%E5%85%B7%E9%9B%86%E5%9C%A8%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8F%82%E8%80%83.20230415.2101.pdf)
 
 ## 📶 技术交流群
 深圳运维圈 QQ交流群：216589280 [点击加入](https://jq.qq.com/?_wv=1027&k=tdDtDoUp)
