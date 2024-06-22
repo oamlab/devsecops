@@ -3,30 +3,23 @@
 
 # 关于部署DevSecOps演示环境的概要资料(Overview of deploying DevSecOps's demo environment)
 
-# k8s  gitlab ci/cd 流水线部署
-
 ---
 
-##  
+# DevSecOps
+
+## Kubernetes、GitLab、CI/CD 流水线部署  
 
 ### 版本：
-
-centos stream 9
-
-k8s 1.28.2
-
-cri-dockerd-0.3.8
-
-calico  v3.24.5
-
-gitlab-ce-16.9.6-ce.0.el9.x86_64
-
-gitlab-runner-16.9.0-1.x86_64
-
-docker-ce-20.10.23
-
-harbor-v2.6.1
-
+````
+Centos Stream 9
+Kubernetes 1.28.2
+CRI-Dockerd-0.3.8
+Calico v3.24.5
+GitLab-ce-16.9.6-ce.0.el9.x86_64
+GitLab-runner-16.9.0-1.x86_64
+Docker-ce-20.10.23
+Harbor-v2.6.1
+````
 
 ### hosts
 ```
@@ -79,7 +72,7 @@ yum -y install kubectl-1.28.2 kubelet-1.28.2 kubeadm-1.28.2 --disableexcludes=ku
 systemctl enable --now kubelet
 
 vim /etc/sysconfig/kubelet
-删除原有内容，添加下面的内容
+# 删除原有内容，添加下面的内容
 KUBELET_EXTRA_ARGS="--cgroup-driver=systemd"
 ```
 
@@ -93,7 +86,7 @@ kubeadm init \
   --pod-network-cidr=10.244.0.0/16 \
   --cri-socket unix:///var/run/cri-dockerd.sock    #指定运行时
  
-加入node节点
+# 加入node节点
 kubeadm join master01:6443 --token 8iv7ow.9gvci6bb1kdigwe2 --discovery-token-ca-cert-hash sha256:2663ef18e49a2db3b39aa2cc23348b73bb8d37b4b1081e07146171a41c204456 --cri-socket unix:///var/run/cri-dockerd.sock
 ```
 
@@ -101,15 +94,17 @@ kubeadm join master01:6443 --token 8iv7ow.9gvci6bb1kdigwe2 --discovery-token-ca-
 
 ```
 wget https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/calico-etcd.yaml
-增加行,对应宿主机网口
+
+# 修改文件
+# 增加行,对应宿主机网口
            - name: IP_AUTODETECTION_METHOD
               value: "interface=enp*"
-pod 网段              
+# pod 网段              
             - name: CALICO_IPV4POOL_CIDR
               value: "10.244.0.0/16"
 ```
 
-检查节点和Pod是否正常！！！
+**此时应检查节点和Pod是否正常！**
 
 ### 安装harbor
 
@@ -130,15 +125,18 @@ trivy:
   offline_scan: true     #离线扫描
   insecure: false
   
-./prepare  
-./install.sh --with-trivy   #开启漏洞扫描
+./prepare
 
-docker-compose up -d   后台运行
+# 安装，并开启漏洞扫描
+./install.sh --with-trivy
 
-由于国内下载漏洞库网速慢的解决办法：
-1.审查服务-漏洞--定时扫描所有-每小时扫描一次      # 看网速了
+# 后台运行
+docker-compose up -d
 
-db目录文件
+# 由于国内下载漏洞库网速慢的解决办法：
+1.审查服务-漏洞--定时扫描所有-每小时扫描一次（漏洞库是否能下载成果与网络有关系）
+
+# db目录文件
 /data/trivy-adapter/trivy
 ├── db
 │   ├── metadata.json
@@ -154,18 +152,21 @@ trivy:
   skip_update: true    #停止在线更新库
 ```
 
-
 ### 安装gitlab-ce
 
 ```
 wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el9/gitlab-ce-16.9.6-ce.0.el9.x86_64.rpm
 yum localinstall gitlab-ce-16.9.6-ce.0.el9.x86_64.rpm
 
-vim /etc/gitlab/gitlab.rb   #改配置
+# 改配置
+vim /etc/gitlab/gitlab.rb
 external_url 'http://gitlab.test.com'
 
-gitlab-ctl reconfigure      #重新加载配置启动
-cat /etc/gitlab/initial_root_password  #查看密码
+# 重新加载配置启动
+gitlab-ctl reconfigure
+
+# 查看密码
+cat /etc/gitlab/initial_root_password
 ```
 
 ### 安装 gitlab-runner
@@ -177,10 +178,20 @@ yum install gitlab-runner-16.9.0
 注册 gitlab-runner
 
 ```
-gitlab-runner register   #注册命令
+# 注册命令范例
+gitlab-runner register --url http://gitlab.test.com --token glrt-Kmnz8Vfzzcce-uwRuy_R
 
-http://gitlab.test.com   #url
-glrt-Kmnz8Vfzzcce-uwRuy_R      #token
+# 参数解释如下：
+
+# 注册命令
+gitlab-runner register
+
+# GitLab的url
+http://gitlab.test.com
+
+# GitLab的token
+glrt-Kmnz8Vfzzcce-uwRuy_R
+
 docker      #运行器                  
 docker:20.10.2    #默认镜像
 ```
@@ -239,7 +250,6 @@ stages:
 ```
 
 同时每个stage又可以与若干个job关联，即一个阶段可以并行执行多个job；如下，在每个job中使用`stage`关键字关联到对应stage即可：
-
 ```
 stages:
   - test
@@ -281,16 +291,18 @@ job_03:
 
 ![image-20240526162852883](./images/image-20240526162852883.png)
 
-#### .gitlab-ci.yaml      #流水线配置
+````
+#流水线配置
+.gitlab-ci.yaml
 
-#### k8s/dockerfile       #构建镜像
+#构建镜像
+k8s/dockerfile
 
-#### k8s/deployment.yaml   # k8s发布 
-
-
+# k8s发布
+k8s/deployment.yaml
+````
 
 ### .gitlab-ci.yaml
-
 ```
 ---
 variables:
@@ -361,8 +373,7 @@ job_04:
   - envsubst < k8s/svc-route.yaml | kubectl apply -f -
 ```
 
-### dockerfile       
-
+### dockerfile
 ```
 FROM 192.168.11.91:5000/library/busybox:latest
 
@@ -396,7 +407,6 @@ CMD ["sh","-c","/root/entrypoint.sh"]
 ```
 
 ### deployment.yaml
-
 ```
 kind: Deployment
 apiVersion: apps/v1
@@ -564,8 +574,6 @@ spec:
 
 ![image-20240526163950077](./images/image-20240526163950077.png)
 
-
-
 ### 提交git
 
 ![image-20240526165142262](./images/image-20240526165142262.png)
@@ -574,10 +582,6 @@ spec:
 
 ![image-20240526165250316](./images/image-20240526165250316.png)
 
-
-
 现在你只管提交代码, 就能快速看到新功能集成到相应的环境了.
 
 提交git会自动触发流水线--docker构建新镜像(拉取最新文件)--推送新镜像到仓库--kubectl请求工作负载更换容器镜像--k8s创建新的pod(滚动更新)
-
-# DevSecOps
