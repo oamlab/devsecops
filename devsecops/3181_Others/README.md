@@ -555,7 +555,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: www.emp.com
+    - host: www.testxxx.com
       http:
         paths:
           - path: /
