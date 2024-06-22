@@ -147,7 +147,7 @@ docker-compose up -d
     ├── metadata.json
     └── trivy-java.db
     
-2.后续手动更新漏洞库，从其他机器上下载db文件，传输到本机目录下  
+2.后续手动更新漏洞库，从其他机器上下载db文件，传输到本机目录下。
 trivy:
   skip_update: true    #停止在线更新库
 ```
