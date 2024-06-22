@@ -176,7 +176,7 @@ curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/s
 yum install gitlab-runner-16.9.0
 ```
 
-##### 获取 token
+##### 获取 gitlab-runner 注册需要的 token
 ![image-20240519150144453](./images/image-20240519150144453.png)
 
 ##### 注册 gitlab-runner
