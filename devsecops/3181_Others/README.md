@@ -9,7 +9,7 @@
 
 ## Kubernetes、GitLab、CI/CD 流水线部署  
 
-### 软件版本：
+### 相关软件版本
 ````
 Centos Stream 9
 Kubernetes 1.28.2
@@ -21,7 +21,7 @@ Docker-ce-20.10.23
 Harbor-v2.6.1
 ````
 
-### hosts
+### 配置 /etc/hosts
 ```
 192.168.11.91 master01
 192.168.11.92 node01
