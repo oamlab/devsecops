@@ -552,8 +552,18 @@ spec:
 简单流程: 提交git会自动触发流水线调用执行器gitlab-runner --> docker构建新镜像(拉取最新静态文件) --> 推送新镜像到仓库 --> kubectl请求工作负载更换容器镜像 --> k8s创建新的pod(滚动更新)。
 
 #### git 内某个项目仓库的目录结构
-
 ![image-20240526162852883](./images/image-20240526162852883.png)
+````
+# GitLab内某个仓库的流水线配置文件
+.gitlab-ci.yaml
+
+# 用于构建应用的容器镜像
+k8s/dockerfile
+
+# 用于在k8s上发布容器应用的容器镜像
+k8s/deployment.yaml
+````
+
 #### 提交文件变更到git
 ![image-20240526165142262](./images/image-20240526165142262.png)
 
