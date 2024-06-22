@@ -27,7 +27,7 @@
 | **Andy Yao**    | 77810419@qq.com   |
 
 ## 🔒 Background
-- ...
+- Focus on the enterprise's practical ability in agile project thinking.
 
 ## 🔑 Purpose
 - DevSecOps is the abbreviation of Development, Security and Operation. It is the practical idea of agile project management in the software life cycle. At each stage of the software life cycle (development, testing, delivery, transit maintenance, grayscale, production, etc.), the project team has the ability to operate continuously in an assembly line manner.
