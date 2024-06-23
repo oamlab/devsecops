@@ -573,5 +573,5 @@ k8s/deployment.yaml
 #### 再次请求URL，返回预期内容 “v4”
 ![image-20240526165250316](./images/image-20240526165250316.png)
 
-#### Harbor镜像的漏洞扫描结果
+#### Harbor里应用的容器镜像的漏洞扫描结果
 ![image-20240622202428](./images/image_20240622202428.png)
