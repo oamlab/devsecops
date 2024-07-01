@@ -6,6 +6,9 @@
 ---
 
 # DevSecOps
+<p align="center">
+	<img alt="OAMLab_DevSecOps_pipeline_demo_img" src="https://github.com/oamlab/oamlab/blob/main/OAMLab/161_%E8%BF%90%E7%BB%B4%E8%A7%82%E7%82%B9/5207_%E8%BF%90%E7%BB%B4.%E6%95%8F%E6%8D%B7%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86.%E4%BC%81%E4%B8%9A%E8%BD%AF%E4%BB%B6%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BDDevSecOps%E5%B7%A5%E5%85%B7%E9%9B%86.%E6%B5%81%E6%B0%B4%E7%BA%BF.%E7%A4%BA%E6%84%8F%E5%9B%BE.20240701.2045.png">
+</p>
 
 ## Kubernetes、GitLab、CI/CT/CD 流水线部署  
 
