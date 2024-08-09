@@ -242,7 +242,7 @@ docker compose up -d
 
 ## 整合Elasticsearch
 
-登录kibana为fluentbit创建用户名和密码。
+登录`Kibana`为`FluentBit`创建用户名和密码。
 
 定位到`Stack Management`-> `Security`->`Users`->`Create User`，输入`username`和`password`。这里我们为了演示用户名和密码设置为`fluentbit`，Role的权限给`superuser`。 
 
@@ -262,7 +262,7 @@ data:
   elastic-password: Zmx1ZW50Yml0  # fluentbit 的Base64编码
 ```
 
-更新fluentbit资源文件
+更新FluentBit资源文件
 
 ```yaml
 apiVersion: fluentbit.fluent.io/v1alpha2
